@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ziad Dwagy, ITSM Team Lead in Dubai: project portfolio, plan and strategy, and blog.">
+<title>Ziad Dwagy ITSM Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: service-desk console — header band, KPI strip, project register with status pills, charts, plan lanes; blog as a reading column */
+:root{
+  --bg:#f3f5f7; --surface:#ffffff; --fg:#14212b; --muted:#566573; --line:#d9e0e6;
+  --accent:#0b5d7a; --accent-soft:#e2eff4;
+  --ok:#1e7a4c; --ok-bg:#e3f3ea; --warn:#9a6200; --warn-bg:#fbf0d9; --plan:#5a4fa0; --plan-bg:#ecebf8; --learn:#0b5d7a; --learn-bg:#e2eff4;
+  --display:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body:"Source Sans 3", "Segoe UI", Roboto, Arial, sans-serif;
+  --mono:"JetBrains Mono", Consolas, "Courier New", monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f161c; --surface:#16212a; --fg:#e4ebf0; --muted:#9aabb8; --line:#2a3945;
+  --accent:#5fb6d6; --accent-soft:#16323f;
+  --ok:#6fd19c; --ok-bg:#163327; --warn:#f0bd5a; --warn-bg:#3a2c10; --plan:#b3aaf0; --plan-bg:#2a2650; --learn:#5fb6d6; --learn-bg:#16323f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f161c; --surface:#16212a; --fg:#e4ebf0; --muted:#9aabb8; --line:#2a3945;
+  --accent:#5fb6d6; --accent-soft:#16323f;
+  --ok:#6fd19c; --ok-bg:#163327; --warn:#f0bd5a; --warn-bg:#3a2c10; --plan:#b3aaf0; --plan-bg:#2a2650; --learn:#5fb6d6; --learn-bg:#16323f; color-scheme:dark}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:28px 0;display:grid;gap:14px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,5vw,42px);line-height:1.1;margin:0;text-wrap:balance}
+.role{font-size:18px;color:var(--muted);margin:0}
+.contact{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--muted)}
+.contact a{color:var(--accent)}
+nav.tabs{display:flex;gap:4px;margin-top:6px}
+nav.tabs a{font-family:var(--display);font-weight:700;font-size:15px;padding:10px 16px;color:var(--muted);text-decoration:none;border-bottom:3px solid transparent}
+nav.tabs a[aria-current="page"]{color:var(--fg);border-bottom-color:var(--accent)}
+nav.tabs a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+main .wrap{padding-block:28px 56px;display:grid;grid-template-columns:minmax(0,1fr);gap:36px}
+main .wrap > *{min-width:0}
+[hidden]{display:none!important}
+h2{font-family:var(--display);font-weight:700;font-size:22px;margin:0 0 4px}
+.lede{color:var(--muted);margin:0 0 16px;max-width:70ch}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.kpi b{display:block;font-family:var(--display);font-size:30px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--accent)}
+.kpi span{font-size:14px;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.filters button{font:600 14px var(--body);padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:14px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:grid;gap:8px;align-content:start;min-width:0}
+.proj h3{font-family:var(--display);font-size:17px;margin:0;line-height:1.3}
+.proj p{margin:0;font-size:15px;color:var(--muted)}
+.proj ul{margin:0;padding-left:18px;font-size:14.5px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:var(--mono);font-size:11.5px;padding:2px 7px;border-radius:4px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.pill{justify-self:start;font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.s-live{color:var(--ok);background:var(--ok-bg)} .s-progress{color:var(--warn);background:var(--warn-bg)}
+.s-planning{color:var(--plan);background:var(--plan-bg)} .s-learning{color:var(--learn);background:var(--learn-bg)}
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.panel h3{font-family:var(--display);font-size:16px;margin:0 0 2px}
+.panel .note{font-size:13.5px;color:var(--muted);margin:0 0 10px}
+.chart-container{position:relative;height:260px;width:100%}
+.lanes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.lane{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:8px;padding:16px}
+.lane.now{border-top-color:var(--ok)} .lane.next{border-top-color:var(--warn)} .lane.dir{border-top-color:var(--plan)}
+.lane h3{font-family:var(--display);font-size:16px;margin:0 0 8px}
+.lane ul{margin:0;padding-left:18px;font-size:15px;display:grid;gap:6px}
+.table-scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:0}
+article{max-width:68ch;margin:0 auto;font-size:17.5px;line-height:1.7}
+article h2{font-size:clamp(26px,4vw,34px);line-height:1.15;margin:0 0 10px;text-wrap:balance}
+article h3{font-family:var(--display);font-size:20px;margin:30px 0 6px}
+article p{margin:0 0 16px}
+article .meta{font-family:var(--mono);font-size:13px;color:var(--muted);margin-bottom:22px}
+.copybar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;max-width:68ch;margin:0 auto 18px;background:var(--accent-soft);border-radius:8px;padding:12px 14px;font-size:14.5px}
+.copybar button{font:700 14px var(--body);padding:8px 14px;border-radius:6px;border:0;background:var(--accent);color:var(--surface);cursor:pointer}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+footer .wrap{padding-block:18px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">IT Service Management · Dubai, UAE</div>
+    <h1>Ziad Dwagy</h1>
+    <p class="role">ITSM Team Lead &amp; Systems Analyst · ITIL® Expert · PMP® · Agile Scrum Master</p>
+    <div class="contact">
+      <span>ziaddwagy@gmail.com</span>
+      <span>+971 55 448 2025</span>
+      <a href="https://www.linkedin.com/in/ziad-dwagy/" target="_blank" rel="noopener">linkedin.com/in/ziad-dwagy</a>
+    </div>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#dashboard" id="tab-dashboard">Dashboard</a>
+      <a href="#blog" id="tab-blog">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="view-dashboard" class="wrap" aria-labelledby="tab-dashboard">
+
+  <div>
+    <h2>At a glance</h2>
+    <p class="lede">17+ years in IT, from business analysis to leading ITSM platform work at a managed services provider. The figures below come from my resume and project list.</p>
+    <div class="kpis">
+      <div class="kpi"><b>17+</b><span>years in IT (since 2008)</span></div>
+      <div class="kpi"><b>9</b><span>years in IT Service Management</span></div>
+      <div class="kpi"><b>7</b><span>ITSM platforms worked on</span></div>
+      <div class="kpi"><b>5</b><span>professional certifications</span></div>
+      <div class="kpi"><b id="kpi-projects">0</b><span>projects and initiatives on this page</span></div>
+    </div>
+  </div>
+
+  <div>
+    <h2>Project portfolio</h2>
+    <p class="lede">Recent projects and initiatives. Use the filters to show projects by status. Customer names are left out on purpose.</p>
+    <div class="filters" role="group" aria-label="Filter projects by status">
+      <button type="button" id="f-all" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" id="f-live" data-filter="live" aria-pressed="false">Live / delivered</button>
+      <button type="button" id="f-progress" data-filter="progress" aria-pressed="false">In progress</button>
+      <button type="button" id="f-planning" data-filter="planning" aria-pressed="false">Planning</button>
+      <button type="button" id="f-learning" data-filter="learning" aria-pressed="false">Learning</button>
+    </div>
+    <div class="projects" id="projects"></div>
+  </div>
+
+  <div>
+    <h2>Portfolio in numbers</h2>
+    <p class="lede">How the projects above split by status and by area, and where my years of experience sit.</p>
+    <div class="charts">
+      <div class="panel">
+        <h3>Projects by status</h3>
+        <p class="note">Count of the projects listed above in each status.</p>
+        <div class="chart-container"><canvas id="c-status" aria-label="Projects by status chart" role="img"></canvas></div>
+      </div>
+      <div class="panel">
+        <h3>Projects by area</h3>
+        <p class="note">Each project counted once under its main area.</p>
+        <div class="chart-container"><canvas id="c-area" aria-label="Projects by area chart" role="img"></canvas></div>
+      </div>
+      <div class="panel">
+        <h3>Career years by role</h3>
+        <p class="note">Approximate years in each role, from 2008 to today.</p>
+        <div class="chart-container"><canvas id="c-career" aria-label="Career years by role chart" role="img"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2>Plan and strategy</h2>
+    <p class="lede">What I'm focused on now, what comes next, and the direction I'm building toward.</p>
+    <div class="lanes">
+      <div class="lane now">
+        <h3>Now</h3>
+        <ul>
+          <li>Post-go-live stabilization of the move from IFS Assyst to ManageEngine</li>
+          <li>Finishing the multi-tenant ServiceDesk Plus MSP setup for BFSI accounts, including asset auto-population on tickets</li>
+          <li>Handing over SLA, process and integration knowledge to the new platform team</li>
+        </ul>
+      </div>
+      <div class="lane next">
+        <h3>Next</h3>
+        <ul>
+          <li>ITIL 5 certification, covering the Product and Service Lifecycle Model and the AI Capability Model</li>
+          <li>Seven-week ServiceNow roadmap: ITSM modules, CMDB, scripting and REST / Integration Hub</li>
+          <li>Time-tracking integration between a customer's ticketing system and Assyst, once requirements are agreed</li>
+        </ul>
+      </div>
+      <div class="lane dir">
+        <h3>Direction</h3>
+        <ul>
+          <li>ITSM Lead and ITSM Manager roles in the GCC</li>
+          <li>Building ITSM frameworks from the ground up and taking them to maturity</li>
+          <li>Joining up ITSM, monitoring and data so service quality can be measured, not guessed</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2>Platforms and tools</h2>
+    <p class="lede">Where I've worked hands-on, grouped by what each tool is used for.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Area</th><th>Platforms and tools</th><th>Typical work</th></tr></thead>
+        <tbody>
+          <tr><td>ITSM platforms</td><td>IFS Assyst, ManageEngine ServiceDesk Plus MSP, ServiceNow, Ivanti, LANDesk, GLPI, BMC Remedy</td><td>Process design, configuration, migration, SLAs, templates</td></tr>
+          <tr><td>Monitoring</td><td>Zabbix</td><td>Maintenance windows, alert suppression, SLA / SLI calculation</td></tr>
+          <tr><td>Data and reporting</td><td>SQL Server, Power BI, SSRS, BIRT, Chart.js</td><td>Service dashboards, SLA and consumption reporting, query tuning</td></tr>
+          <tr><td>Integration</td><td>REST and SOAP APIs, webhooks, Python (FastAPI), Node.js, Deluge</td><td>Platform-to-platform integration, custom triggers, data pipelines</td></tr>
+          <tr><td>Infrastructure</td><td>Microsoft Azure, on-premises Kubernetes, SSL / TLS, LDAP</td><td>Hosting and securing ITSM platforms</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="view-blog" class="wrap" aria-labelledby="tab-blog" hidden>
+  <div class="copybar">
+    <span>Want to post this on LinkedIn or Medium? Copy the article text and paste it in.</span>
+    <button type="button" id="copy-blog">Copy article</button>
+  </div>
+  <article id="blog-article">
+    <h2>What leading an ITSM migration taught me about the small details</h2>
+    <div class="meta">Ziad Dwagy · ITSM Team Lead · Dubai</div>
+
+    <p>This month we went live on a new ITSM platform. We moved from IFS Assyst, a tool I had owned and shaped for years, to ManageEngine. I led the migration tasks and spent two months supporting the go-live, including evenings and weekends with the team.</p>
+    <p>Migrations get described as data moving from one system to another. In practice, the data is the easy part. The hard part is everything the old system was quietly doing for you that nobody wrote down. Here are the lessons I'm taking with me.</p>
+
+    <h3>1. Map the behaviour, not just the fields</h3>
+    <p>Our old platform enforced rules in places nobody remembered: a priority matrix in one table, contract checks in a lookup filter, SLA timing tied to service hours. Field mapping alone would have lost all of that. Before moving anything, list what the old system does: what it blocks, what it calculates and what it triggers. Then decide where each behaviour lives in the new platform.</p>
+
+    <h3>2. SLAs follow the clock, so define the clock first</h3>
+    <p>Our BFSI customers run sites on very different schedules: some 24×7, some 15 hours a day for five days, others 13 hours a day all week, plus standard office hours. In ServiceDesk Plus MSP, operational hours per site turned out to be the right key for SLA behaviour. Get the calendars right first and the SLAs follow. Get them wrong and every report afterwards is wrong too.</p>
+
+    <h3>3. Multi-tenant means isolation by design</h3>
+    <p>When one platform serves several customer accounts, isolation has to be designed in. We found that categories are scoped at the account level, not the site level. That meant separate category trees per account, which was cleaner than trying to share one and filter it.</p>
+
+    <h3>4. Some problems are platform limits, not configuration mistakes</h3>
+    <p>We wanted tickets to fill in product and contract details automatically from the selected asset. After a lot of testing it became clear the asset field simply isn't available to client-side form rules in this edition. Recognising a platform limit early saves days. We moved the logic to server-side custom triggers instead.</p>
+
+    <h3>5. Infrastructure details can stop a project cold</h3>
+    <p>Two examples. Our database migration failed until we recreated the database with the collation the application expected. Later, one user couldn't connect at all, and the cause was antivirus SSL inspection, not our certificate. Neither is glamorous, but both blocked progress until someone dug in.</p>
+
+    <h3>6. Validation belongs where the user actually submits</h3>
+    <p>On the old platform I built a database trigger to block tickets for items without a valid maintenance contract. It worked perfectly when tested directly in SQL, but the application validated input before it ever reached the database. The lesson: enforce rules at the layer the user goes through, and test through the real front end.</p>
+
+    <h3>7. Monitoring and SLAs need to agree</h3>
+    <p>In Zabbix, putting a host into maintenance doesn't automatically exclude that downtime from SLA calculations. Those are two separate settings. Alerts can also still fire during maintenance unless the notification actions are set up to ignore it. Planned work should never damage your availability figures, so check both.</p>
+
+    <h3>8. Reporting is part of the service</h3>
+    <p>I built a live service dashboard covering incidents, requests, SLAs and engineer performance, and embedded it in the ITSM portal so people didn't have to go looking. Along the way I fixed a reporting query that pushed the database server to 100% CPU, by splitting it into targeted queries and pre-aggregating joins. A dashboard nobody trusts, or one that slows the server down, doesn't help anyone.</p>
+
+    <h3>What's next for me</h3>
+    <p>I'm preparing for ITIL 5 and working through a structured ServiceNow roadmap. I enjoy building ITSM frameworks from the ground up and taking them to maturity: clear processes, measurable SLAs and tools configured around how people actually work.</p>
+    <p>If you're planning an ITSM migration or building service management for a multi-tenant environment, I'm happy to compare notes. Feel free to connect.</p>
+  </article>
+</section>
+</main>
+
+<footer><div class="wrap">Ziad Dwagy · ITSM Team Lead · Dubai, UAE</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const PROJECTS = [
+  {t:"ITSM platform migration: IFS Assyst to ManageEngine", s:"live", area:"Migration",
+   d:"Led the migration tasks, mapping existing processes, SLAs and integrations to the new platform. Went live in October 2026.",
+   b:["Supported go-live over two months, including evenings and weekends","Knowledge transfer to the new platform team","Now in post-go-live stabilization"],
+   tags:["IFS Assyst","ManageEngine","ITIL"]},
+  {t:"Multi-tenant ServiceDesk Plus MSP for BFSI accounts", s:"progress", area:"Platform build",
+   d:"On-premises ServiceDesk Plus MSP hosted in Azure, serving separate BFSI accounts in UAE and Oman with many sites, including ATM fleets with per-machine contracts and SLAs.",
+   b:["Done: SQL Server migration, account and site setup, SSL","Done: incident templates with engineer stage times, SLA by site operating hours","Done: multi-contract billing, satisfaction surveys, Assyst webhook integration","Open: auto-filling product and contract from the selected asset"],
+   tags:["SDP MSP","Azure","SQL Server","Deluge","Python"]},
+  {t:"Live ITSM service dashboard", s:"live", area:"Reporting",
+   d:"Node.js back end with an HTML / Chart.js front end showing incidents, requests, SLAs and engineer performance, embedded in the ITSM portal.",
+   b:["Tracks ticket effort against contracted hours","Six views: overview, incidents, requests, SLA, engineers, all tickets"],
+   tags:["Node.js","Chart.js","SQL Server","BIRT"]},
+  {t:"SQL reporting performance fix", s:"live", area:"Reporting",
+   d:"Rebuilt consumption reports that drove the database server to 100% CPU.",
+   b:["Split one large UNION ALL into targeted queries","Pre-aggregated activity data to stop join multiplication"],
+   tags:["T-SQL","SSRS"]},
+  {t:"Contract enforcement on ticket logging", s:"progress", area:"Platform build",
+   d:"Stopping tickets from being logged against items without a valid maintenance contract.",
+   b:["Contract-filtered item lookup in the ITSM form","Database trigger prototype and audit log design","Next: expiry-date and budget checks"],
+   tags:["IFS Assyst","JPQL","SQL Server"]},
+  {t:"Oracle data in SSRS reports", s:"live", area:"Reporting",
+   d:"Designed a way to report on Oracle contract data in SSRS after direct Oracle drivers failed.",
+   b:["Scheduled CSV export from Oracle","Bulk-load into a SQL Server staging table for SSRS"],
+   tags:["Oracle","SQL Server","SSRS"]},
+  {t:"Monitoring maintenance and SLA protection", s:"live", area:"Monitoring",
+   d:"Configured Zabbix so planned work doesn't trigger false alerts or damage availability figures.",
+   b:["Maintenance windows and alert suppression in notification actions","SLA excluded downtime set separately from maintenance"],
+   tags:["Zabbix"]},
+  {t:"CMDB optimization", s:"live", area:"Platform build",
+   d:"Redesigned the configuration item classification and built reconciliation and data synchronization.",
+   b:["CI classification schema","SQL-based reconciliation logic","Automated sync from source data to dashboard"],
+   tags:["CMDB","SQL Server"]},
+  {t:"SOAP integration feeding a dashboard", s:"live", area:"Integration",
+   d:"Debugged a customer transaction SOAP method that feeds a FastAPI and Chart.js dashboard.",
+   b:["Fixed malformed request parameters","Data flowing to the dashboard"],
+   tags:["SOAP","FastAPI","Chart.js"]},
+  {t:"Time-tracking integration into Assyst", s:"planning", area:"Integration",
+   d:"Pushing engineers' time entries from a customer's ticketing system into Assyst.",
+   b:["To agree: data direction, field mapping, sync frequency","To agree: ticket matching and API access"],
+   tags:["Assyst","REST API"]},
+  {t:"ITIL 5 certification", s:"learning", area:"Professional development",
+   d:"Preparing for ITIL 5 with a structured four-week study plan.",
+   b:["Product and Service Lifecycle Model","AI Capability Model"],
+   tags:["ITIL 5"]},
+  {t:"ServiceNow roadmap", s:"learning", area:"Professional development",
+   d:"Seven-week self-study on a developer instance.",
+   b:["ITSM modules and CMDB","Scripting, REST API and Integration Hub"],
+   tags:["ServiceNow"]}
+];
+const STATUS = {live:"Live / delivered", progress:"In progress", planning:"Planning", learning:"Learning"};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function renderProjects(filter){
+  const el = document.getElementById("projects");
+  el.innerHTML = PROJECTS.filter(p => filter === "all" || p.s === filter).map(p => `
+    <div class="proj">
+      <span class="pill s-${p.s}">${STATUS[p.s]}</span>
+      <h3>${esc(p.t)}</h3>
+      <p>${esc(p.d)}</p>
+      <ul>${p.b.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      <div class="tags">${p.tags.map(x => `<span class="tag">${esc(x)}</span>`).join("")}</div>
+    </div>`).join("");
+}
+document.getElementById("kpi-projects").textContent = PROJECTS.length;
+renderProjects("all");
+document.querySelectorAll(".filters button").forEach(btn => btn.addEventListener("click", () => {
+  document.querySelectorAll(".filters button").forEach(b => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
+  renderProjects(btn.dataset.filter);
+}));
+
+// Charts
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+let charts = [];
+function drawCharts(){
+  if (!window.Chart) return;
+  charts.forEach(c => c.destroy()); charts = [];
+  const fg = css("--fg"), muted = css("--muted"), line = css("--line");
+  Chart.defaults.font.family = css("--body");
+  Chart.defaults.color = muted;
+  const keys = Object.keys(STATUS);
+  charts.push(new Chart(document.getElementById("c-status"), {
+    type:"bar",
+    data:{labels:keys.map(k => STATUS[k]), datasets:[{data:keys.map(k => PROJECTS.filter(p => p.s === k).length),
+      backgroundColor:[css("--ok"),css("--warn"),css("--plan"),css("--learn")], borderRadius:4}]},
+    options:{maintainAspectRatio:false, plugins:{legend:{display:false}},
+      scales:{y:{beginAtZero:true, ticks:{stepSize:1, color:muted}, grid:{color:line}}, x:{ticks:{color:fg}, grid:{display:false}}}}
+  }));
+  const areas = [...new Set(PROJECTS.map(p => p.area))];
+  charts.push(new Chart(document.getElementById("c-area"), {
+    type:"bar",
+    data:{labels:areas, datasets:[{data:areas.map(a => PROJECTS.filter(p => p.area === a).length), backgroundColor:css("--accent"), borderRadius:4}]},
+    options:{indexAxis:"y", maintainAspectRatio:false, plugins:{legend:{display:false}},
+      scales:{x:{beginAtZero:true, ticks:{stepSize:1, color:muted}, grid:{color:line}}, y:{ticks:{color:fg}, grid:{display:false}}}}
+  }));
+  charts.push(new Chart(document.getElementById("c-career"), {
+    type:"bar",
+    data:{labels:["IT Business Analyst, Lattakia Port (2008–14)","IT Business Analyst, Ministry of Finance (2014–16)","Analyst & Customer Success, TjDeeD (2017–18)","IT Service Delivery Lead, Brandtoaster (2018–19)","ITSM Team Lead, CNS (2019–now)"],
+      datasets:[{data:[6,2,1,2,7], backgroundColor:[muted,muted,css("--accent"),css("--accent"),css("--accent")], borderRadius:4}]},
+    options:{indexAxis:"y", maintainAspectRatio:false, plugins:{legend:{display:false}, tooltip:{callbacks:{label:c => `about ${c.raw} years`}}},
+      scales:{x:{beginAtZero:true, max:8, ticks:{stepSize:2, color:muted}, title:{display:true, text:"Years (approx.)", color:muted}, grid:{color:line}},
+        y:{ticks:{color:fg, callback(v){ const l = this.getLabelForValue(v); return l.length > 34 ? l.split(", ") : l; }}, grid:{display:false}}}}
+  }));
+}
+
+// Tabs via hash
+function show(){
+  const view = location.hash === "#blog" ? "blog" : "dashboard";
+  document.getElementById("view-dashboard").hidden = view !== "dashboard";
+  document.getElementById("view-blog").hidden = view !== "blog";
+  document.getElementById("tab-dashboard").setAttribute("aria-current", view === "dashboard" ? "page" : "false");
+  document.getElementById("tab-blog").setAttribute("aria-current", view === "blog" ? "page" : "false");
+  if (view === "dashboard") drawCharts();
+}
+window.addEventListener("hashchange", show);
+try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawCharts); } catch(e) {}
+new MutationObserver(drawCharts).observe(document.documentElement, {attributes:true, attributeFilter:["data-theme"]});
+show();
+
+// Copy article
+document.getElementById("copy-blog").addEventListener("click", async (e) => {
+  const art = document.getElementById("blog-article");
+  const text = [...art.children].filter(n => !n.classList.contains("meta")).map(n => n.innerText).join("\n\n");
+  const btn = e.currentTarget;
+  try { await navigator.clipboard.writeText(text); btn.textContent = "Copied"; }
+  catch(err) {
+    const r = document.createRange(); r.selectNodeContents(art);
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    btn.textContent = "Text selected, press Ctrl+C";
+  }
+  setTimeout(() => { btn.textContent = "Copy article"; }, 2500);
+});
+</script>
+</body>
+</html>
